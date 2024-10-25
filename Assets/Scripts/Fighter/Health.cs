@@ -5,6 +5,7 @@ public class Health
     private float _maxHealth;
 
     public event Action Died;
+    public event Action<float> Changed;
 
     public Health(float maxHealth)
     {
@@ -18,13 +19,15 @@ public class Health
     {
         CurrentHealth -= damage;
 
+        Changed?.Invoke(CurrentHealth);
+
         if (CurrentHealth <= 0)
         {
             Died?.Invoke();
         }
     }
 
-    public bool TryAddHealth(float recoverHealth)
+    public bool TryTreated(float recoverHealth)
     {
         if (CurrentHealth + recoverHealth > _maxHealth)
         {
@@ -33,6 +36,7 @@ public class Health
         else
         {
             CurrentHealth += recoverHealth;
+            Changed?.Invoke(CurrentHealth);
             return true;
         }
     }

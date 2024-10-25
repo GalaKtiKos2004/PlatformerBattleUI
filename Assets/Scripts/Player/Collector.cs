@@ -14,22 +14,23 @@ public class Collector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out ICollectable collectable))
+        if (collision.TryGetComponent(out ICollectable collectable) == false)
         {
-            if (collectable is Coin)
-            {
-                _wallet.AddCoin();
-            }
-
-            if (collectable is MedecineChest medecineChest)
-            {
-                if (_fighter.TryAddHealth(medecineChest.RecoverHealth) == false)
-                {
-                    return;
-                }
-            }
-
-            collectable.Collect();
+            return;
         }
+
+        if (collectable is Coin)
+        {
+            _wallet.AddCoin();
+        }
+        else if (collectable is MedecineChest medecineChest)
+        {
+            if (_fighter.TryAddHealth(medecineChest.RecoverHealth) == false)
+            {
+                return;
+            }
+        }
+
+        collectable.Collect();
     }
 }

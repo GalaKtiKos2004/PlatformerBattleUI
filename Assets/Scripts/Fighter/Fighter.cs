@@ -8,6 +8,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private Vector2 _colliderSize;
+
     [SerializeField] private float _damage;
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _attackColldown = 3f;
@@ -17,7 +18,9 @@ public class Fighter : MonoBehaviour
     private Attacker _attacker;
     private Health _health;
     private WaitForSeconds _wait;
+
     private Vector3 _startPosition;
+
     private bool _canAttack = true;
 
     private void Awake()
@@ -53,7 +56,7 @@ public class Fighter : MonoBehaviour
 
     public bool TryAddHealth(float recoverHealth)
     {
-        if (_health.TryAddHealth(recoverHealth))
+        if (_health.TryTreated(recoverHealth))
         {
             return true;
         }
