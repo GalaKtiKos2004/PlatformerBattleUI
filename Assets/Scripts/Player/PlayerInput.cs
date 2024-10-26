@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private const string Horizontal = "Horizontal";
+    private const string Vertical = "Vertical";
     private const string Jump = "Jump";
 
     public float MoveInput {  get; private set; }
@@ -20,7 +21,7 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         MoveInput = Input.GetAxisRaw(Horizontal);
-        JumpInput =  Convert.ToBoolean(Input.GetAxisRaw(Jump));
+        JumpInput =  Convert.ToBoolean(Input.GetButton(Jump) || Input.GetButton(Vertical));
         IsAttack = Input.GetKeyDown(KeyCode.Z);
     }
 }

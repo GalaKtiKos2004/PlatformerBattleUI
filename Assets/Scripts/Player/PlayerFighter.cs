@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFighter : MonoBehaviour
+[RequireComponent(typeof(PlayerInput))]
+public class PlayerFighter : Drummer
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private HealthView _healthView;
+
+    private PlayerInput _input;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+        _input = GetComponent<PlayerInput>();
+        _healthView.Init(_health);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (_input.IsAttack)
+        {
+            TryAttack();
+        }
+    }
+
+    protected override void Die()
+    {
+        CreateNewHealth();
+        _healthView.Init(_health);
     }
 }
