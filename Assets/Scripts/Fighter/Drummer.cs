@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(ColliderDetector))]
 public class Drummer : Fighter
 {
+    [SerializeField] private HealthView _healthView;
+
     [SerializeField] private LayerMask _attackedLayer;
     [SerializeField] private Vector2 _colliderSize;
 
@@ -17,6 +19,8 @@ public class Drummer : Fighter
 
     private bool _canAttack;
 
+    protected HealthView HealthView => _healthView;
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +29,11 @@ public class Drummer : Fighter
         _attacker = new Attacker();
         _detector = GetComponent<ColliderDetector>();
         _canAttack = true;
+    }
+
+    private void Start()
+    {
+        _healthView.Init(_health);
     }
 
     private void Update()
@@ -48,6 +57,11 @@ public class Drummer : Fighter
     protected override void Die()
     {
         Destroy(gameObject);
+    }
+
+    protected void InitHealthBar()
+    {
+        _healthView.Init(_health);
     }
 
     private IEnumerator AttackColldown()

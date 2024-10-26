@@ -8,6 +8,7 @@ public abstract class Fighter : MonoBehaviour
 
     protected virtual void Awake()
     {
+
         CreateNewHealth();
     }
 

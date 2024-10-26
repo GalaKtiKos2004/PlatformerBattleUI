@@ -2,18 +2,18 @@ using System;
 
 public class Health
 {
-    private float _maxHealth;
-
     public event Action Died;
     public event Action<float, float> Changed;
 
     public Health(float maxHealth)
     {
-        _maxHealth = maxHealth;
+        MaxHealth = maxHealth;
         CurrentHealth = maxHealth;
 
-        Changed?.Invoke(CurrentHealth, _maxHealth);
+        Changed?.Invoke(CurrentHealth, MaxHealth);
     }
+
+    public float MaxHealth { get; private set; }
 
     public float CurrentHealth { get; private set; }
 
@@ -21,7 +21,7 @@ public class Health
     {
         CurrentHealth -= damage;
 
-        Changed?.Invoke(CurrentHealth, _maxHealth);
+        Changed?.Invoke(CurrentHealth, MaxHealth);
 
         if (CurrentHealth <= 0)
         {
@@ -31,14 +31,14 @@ public class Health
 
     public bool TryTreated(float recoverHealth)
     {
-        if (CurrentHealth + recoverHealth > _maxHealth)
+        if (CurrentHealth + recoverHealth > MaxHealth)
         {
             return false;
         }
         else
         {
             CurrentHealth += recoverHealth;
-            Changed?.Invoke(CurrentHealth, _maxHealth);
+            Changed?.Invoke(CurrentHealth, MaxHealth);
             return true;
         }
     }

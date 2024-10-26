@@ -1,17 +1,18 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PositionStarter))]
 public class PlayerFighter : Drummer
 {
-    [SerializeField] private HealthView _healthView;
-
     private PlayerInput _input;
+    private PositionStarter _positionStarter;
 
     protected override void Awake()
     {
         base.Awake();
         _input = GetComponent<PlayerInput>();
-        _healthView.Init(_health);
+
+        _positionStarter = GetComponent<PositionStarter>();
     }
 
     private void Update()
@@ -25,6 +26,7 @@ public class PlayerFighter : Drummer
     protected override void Die()
     {
         CreateNewHealth();
-        _healthView.Init(_health);
+        InitHealthBar();
+        _positionStarter.StartGame();
     }
 }

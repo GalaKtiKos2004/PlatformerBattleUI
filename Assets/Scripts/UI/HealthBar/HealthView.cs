@@ -25,13 +25,14 @@ public class HealthView : MonoBehaviour
     {
         _health = health;
 
+        UpdateBar(health.CurrentHealth, health.MaxHealth);
+
         health.Changed += UpdateBar;
     }
 
     private void UpdateBar(float value, float maxValue)
     {
         StartCoroutine(DecreaseHealthSmoothly(value / maxValue));
-        Debug.Log(value / maxValue);
     }
 
     private IEnumerator DecreaseHealthSmoothly(float targetHealth)
