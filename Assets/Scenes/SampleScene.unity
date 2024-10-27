@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 575364048}
   - component: {fileID: 575364050}
   - component: {fileID: 575364051}
+  - component: {fileID: 575364052}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -990,8 +991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcef6cdb96937c246a169c3476be71bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _healthView: {fileID: 832079670}
   _attackedLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1010,6 +1009,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc71b3bf3482214fa7247e01fff9601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &575364052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575364030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfd16184204f3c409429ee1f39fa719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthView: {fileID: 832079670}
+  _maxHealth: 100
 --- !u!1 &609168323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3202,10 @@ PrefabInstance:
       addedObject: {fileID: 1896798558}
     - targetCorrespondingSourceObject: {fileID: 7889669209707482266, guid: 0188401b33df98e47b796a6d8fd772e1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1896798572}
+      addedObject: {fileID: 1896798579}
+    - targetCorrespondingSourceObject: {fileID: 7889669209707482266, guid: 0188401b33df98e47b796a6d8fd772e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1896798580}
   m_SourcePrefab: {fileID: 100100000, guid: 0188401b33df98e47b796a6d8fd772e1, type: 3}
 --- !u!1 &1290884326
 GameObject:
@@ -3968,7 +3984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec0c634330af144cad772ec0a37c29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1896798572
+--- !u!114 &1896798579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3977,17 +3993,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1896798550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0036136041370954e8139738b5833d98, type: 3}
+  m_Script: {fileID: 11500000, guid: e72dd6e13398eb8479dc82af51669e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _healthView: {fileID: 1016655614}
   _attackedLayer:
     serializedVersion: 2
     m_Bits: 256
-  _colliderSize: {x: 1.5, y: 0}
+  _colliderSize: {x: 1.5, y: 1}
   _damage: 10
   _attackColldown: 3
+--- !u!114 &1896798580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896798550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfd16184204f3c409429ee1f39fa719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthView: {fileID: 1016655614}
+  _maxHealth: 100
 --- !u!1 &1906755301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4652,7 +4680,10 @@ PrefabInstance:
       addedObject: {fileID: 4446912251973298229}
     - targetCorrespondingSourceObject: {fileID: 7889669209707482266, guid: 0188401b33df98e47b796a6d8fd772e1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4446912251973298243}
+      addedObject: {fileID: 4446912251973298250}
+    - targetCorrespondingSourceObject: {fileID: 7889669209707482266, guid: 0188401b33df98e47b796a6d8fd772e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4446912251973298251}
   m_SourcePrefab: {fileID: 100100000, guid: 0188401b33df98e47b796a6d8fd772e1, type: 3}
 --- !u!4 &4446912251973298221 stripped
 Transform:
@@ -4671,7 +4702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec0c634330af144cad772ec0a37c29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4446912251973298243
+--- !u!114 &4446912251973298250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4680,17 +4711,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1654254137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0036136041370954e8139738b5833d98, type: 3}
+  m_Script: {fileID: 11500000, guid: e72dd6e13398eb8479dc82af51669e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _healthView: {fileID: 1654374858}
   _attackedLayer:
     serializedVersion: 2
     m_Bits: 256
   _colliderSize: {x: 1.5, y: 1}
   _damage: 10
   _attackColldown: 3
+--- !u!114 &4446912251973298251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654254137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfd16184204f3c409429ee1f39fa719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthView: {fileID: 1654374858}
+  _maxHealth: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

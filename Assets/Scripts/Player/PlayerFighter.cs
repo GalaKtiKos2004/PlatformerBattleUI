@@ -28,7 +28,6 @@ public class PlayerFighter : Drummer
     protected override void Die()
     {
         CreateNewHealth();
-        InitHealthBar();
         _positionStarter.StartGame();
     }
 }

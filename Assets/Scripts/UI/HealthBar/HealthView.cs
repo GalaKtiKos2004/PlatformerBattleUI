@@ -25,9 +25,7 @@ public class HealthView : MonoBehaviour
     {
         _health = health;
 
-        UpdateBar(health.CurrentHealth, health.MaxHealth);
-
-        health.Changed += UpdateBar;
+        _health.Changed += UpdateBar;
     }
 
     private void UpdateBar(float value, float maxValue)
