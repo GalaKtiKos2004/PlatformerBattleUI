@@ -15,12 +15,14 @@ public class PlayerFighter : Drummer
         _positionStarter = GetComponent<PositionStarter>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_input.IsAttack)
-        {
-            TryAttack();
-        }
+        _input.Attacked += TryAttack;
+    }
+
+    private void OnDisable()
+    {
+        _input.Attacked -= TryAttack;
     }
 
     protected override void Die()

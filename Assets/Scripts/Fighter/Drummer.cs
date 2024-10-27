@@ -19,8 +19,6 @@ public class Drummer : Fighter
 
     private bool _canAttack;
 
-    protected HealthView HealthView => _healthView;
-
     protected override void Awake()
     {
         base.Awake();
@@ -33,7 +31,7 @@ public class Drummer : Fighter
 
     private void Start()
     {
-        _healthView.Init(_health);
+        _healthView.Init(Health);
     }
 
     private void Update()
@@ -41,7 +39,7 @@ public class Drummer : Fighter
         TryAttack();
     }
 
-    protected override void TryAttack()
+    protected void TryAttack()
     {
         if (_canAttack == false)
         {
@@ -61,7 +59,7 @@ public class Drummer : Fighter
 
     protected void InitHealthBar()
     {
-        _healthView.Init(_health);
+        _healthView.Init(Health);
     }
 
     private IEnumerator AttackColldown()

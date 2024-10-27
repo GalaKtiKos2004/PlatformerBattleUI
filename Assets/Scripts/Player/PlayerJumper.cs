@@ -18,12 +18,14 @@ public class PlayerJumper : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
     }
 
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        if (_playerInput.JumpInput)
-        {
-            TryJump();
-        }
+        _playerInput.Jumped += TryJump;
+    }
+
+    private void OnDisable()
+    {
+        _playerInput.Jumped -= TryJump;
     }
 
     private void TryJump()

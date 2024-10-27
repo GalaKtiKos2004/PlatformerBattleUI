@@ -4,11 +4,12 @@ public abstract class Fighter : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 100f;
 
-    protected Health _health;
+    private Health _health;
+    
+    protected Health Health => _health;
 
     protected virtual void Awake()
     {
-
         CreateNewHealth();
     }
 
@@ -27,23 +28,13 @@ public abstract class Fighter : MonoBehaviour
         _health.TakeDamage(damage);
     }
 
-    public bool TryAddHealth(float recoverHealth)
-    {
-        if (_health.TryTreated(recoverHealth))
-        {
-            return true;
-        }
-
-        return false;
-    }
+    public bool TryAddHealth(float recoverHealth) => _health.TryTreated(recoverHealth);
 
     protected void CreateNewHealth()
     {
         _health = new Health(_maxHealth);
         _health.Died += Die;
     }
-
-    protected abstract void TryAttack();
 
     protected abstract void Die();
 }

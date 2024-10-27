@@ -7,21 +7,30 @@ public class PlayerInput : MonoBehaviour
     private const string Vertical = "Vertical";
     private const string Jump = "Jump";
 
+    private const KeyCode AttackKey = KeyCode.Z;
+
     public float MoveInput {  get; private set; }
-    public bool JumpInput { get; private set; }
-    public bool IsAttack {  get; private set; }
+
+    public event Action Jumped;
+    public event Action Attacked;
 
     private void Awake()
     {
         MoveInput = 0;
-        JumpInput = false;
-        IsAttack = false;
     }
 
     private void Update()
     {
         MoveInput = Input.GetAxisRaw(Horizontal);
-        JumpInput =  Convert.ToBoolean(Input.GetButton(Jump) || Input.GetButton(Vertical));
-        IsAttack = Input.GetKeyDown(KeyCode.Z);
+
+        if (Input.GetButtonDown(Jump) || Input.GetButtonDown(Vertical))
+        {
+            Jumped?.Invoke();
+        }
+
+        if (Input.GetKeyDown(AttackKey))
+        {
+            Attacked?.Invoke();
+        }
     }
 }

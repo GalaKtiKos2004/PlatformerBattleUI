@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class IMovableAnimator : MonoBehaviour
 {
-    const string SpeedParametr = "Speed";
+    private const string SpeedParametr = "Speed";
 
     private Animator _animator;
     private IMovable _mover;
