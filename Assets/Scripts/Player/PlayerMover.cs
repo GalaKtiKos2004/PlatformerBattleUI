@@ -24,7 +24,6 @@ public class PlayerMover : MonoBehaviour, IMovable
     private void FixedUpdate()
     {
         Move();
-        
     }
 
     private void Move()

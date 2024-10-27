@@ -9,8 +9,6 @@ public class Health
     {
         MaxHealth = maxHealth;
         CurrentHealth = maxHealth;
-
-        Changed?.Invoke(CurrentHealth, MaxHealth);
     }
 
     public float MaxHealth { get; private set; }

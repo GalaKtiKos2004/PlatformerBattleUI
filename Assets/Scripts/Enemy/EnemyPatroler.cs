@@ -13,6 +13,11 @@ public class EnemyPatroler : MonoBehaviour, IMovable
 
     private Transform _target;
 
+    private Coroutine _patrolDelayCorutine;
+
+    private Quaternion _rotationLeftAngle = Quaternion.Euler(0f, 0f, 0f);
+    private Quaternion _rotationRightAngle = Quaternion.Euler(0f, 180f, 0f);
+
     private WaitForSeconds _wait;
 
     private float _currentSpeed;
@@ -41,7 +46,7 @@ public class EnemyPatroler : MonoBehaviour, IMovable
         {
             if (_currentWaypoint == _waypoints.Count - 1)
             {
-                StartCoroutine(CountPatrolDelay());
+                _patrolDelayCorutine = StartCoroutine(CountPatrolDelay());
             }
             else
             {
@@ -68,19 +73,16 @@ public class EnemyPatroler : MonoBehaviour, IMovable
 
     private void FlipTowardsTarget()
     {
-        Quaternion rotationLeftAngle = Quaternion.Euler(0f, 0f, 0f);
-        Quaternion rotationRightAngle = Quaternion.Euler(0f, 180f, 0f);
-
         if (_target == null)
             return;
 
         if (_target.position.x > transform.position.x)
         {
-            transform.rotation = rotationRightAngle;
+            transform.rotation = _rotationRightAngle;
         }
         else if (_target.position.x < transform.position.x)
         {
-            transform.rotation = rotationLeftAngle;
+            transform.rotation = _rotationLeftAngle;
         }
     }
 
@@ -93,7 +95,10 @@ public class EnemyPatroler : MonoBehaviour, IMovable
 
             _currentSpeed = _speed;
 
-            StopAllCoroutines();
+            if (_patrolDelayCorutine != null)
+            {
+                StopCoroutine(_patrolDelayCorutine);
+            }
 
             _target = _player.transform;
         }
@@ -105,8 +110,6 @@ public class EnemyPatroler : MonoBehaviour, IMovable
 
     private IEnumerator CountPatrolDelay()
     {
-        Vector3 rotation = new Vector3(0f, 180f, 0f);
-
         _currentSpeed = 0;
         _currentWaypoint = 0;
 

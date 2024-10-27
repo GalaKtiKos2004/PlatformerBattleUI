@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerFinder : MonoBehaviour
 {
-    [SerializeField] LayerMask _playerLayer;
+    [SerializeField] private LayerMask _playerLayer;
 
     public event Action Collide;
 
